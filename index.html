@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ===== PRIMARY SEO META ===== -->
+<title>OvercastUI — In-Game Web Browser for Minecraft (Fabric Mod) | Browse & Watch Video Without Alt-Tabbing</title>
+<meta name="description" content="OvercastUI is a client-side Fabric mod that puts a full web browser inside Minecraft, Steam-overlay style. Browse the web, read a wiki, or watch video in picture-in-picture without alt-tabbing or pausing your game.">
+<link rel="canonical" href="https://merenotnoonereal.github.io/overcastui/">
+
+<!-- ===== OPEN GRAPH / SOCIAL ===== -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="OvercastUI — In-Game Web Browser for Minecraft">
+<meta property="og:description" content="A full web browser inside Minecraft, Steam-overlay style. Browse, read the wiki, or watch video in picture-in-picture without alt-tabbing or pausing your game. Client-side Fabric mod.">
+<meta property="og:url" content="https://merenotnoonereal.github.io/overcastui/">
+<!-- <meta property="og:image" content="https://merenotnoonereal.github.io/overcastui/preview.png"> EDIT: add a 1200x630 image -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ===== JSON-LD: SoftwareApplication ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OvercastUI",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Minecraft Java Edition (Fabric Loader)",
+  "description": "Client-side Fabric mod that embeds a full Chromium web browser inside Minecraft as a Steam-overlay-style overlay. Browse the web, read a wiki, or watch video in picture-in-picture without alt-tabbing or pausing your game, using draggable, resizable, tabbed windows.",
+  "url": "https://merenotnoonereal.github.io/overcastui/",
+  "downloadUrl": "https://www.curseforge.com/minecraft/mc-mods/overcastui",
+  "installUrl": "https://www.curseforge.com/minecraft/mc-mods/overcastui",
+  "softwareRequirements": "Fabric Loader, Fabric API",
+  "author": { "@type": "Person", "name": "merenotnoone" },
+  "copyrightHolder": { "@type": "Person", "name": "merenotnoone" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<!-- ===== JSON-LD: FAQPage (must match the visible FAQ below) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there a mod to browse the web inside Minecraft?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. OvercastUI is a client-side Fabric mod that embeds a full web browser into Minecraft as a Steam-overlay-style overlay. You open it with a hotkey (default Shift+Tab) and browse in draggable, tabbed windows without leaving the game." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does OvercastUI pause my game when the browser is open?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Unlike alt-tabbing, OvercastUI never pauses your game — your session keeps running underneath the browser overlay." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I watch a video or YouTube while playing Minecraft?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. OvercastUI has a Picture-in-Picture mode, so you can keep a video playing in the corner while you play." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I open the browser overlay?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Press the hotkey, which defaults to Shift+Tab. The hotkey is rebindable in the controls settings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is OvercastUI client-side?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. OvercastUI is fully client-side; nothing needs to be installed on the server." }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff; --fg:#1a1a1a; --muted:#555; --card:#f5f6f8;
+    --border:#e2e4e8; --accent:#2f6fed; --accent-fg:#ffffff; --link:#1a6dc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0f1115; --fg:#e8eaed; --muted:#9aa0a6; --card:#171a20;
+      --border:#262a31; --accent:#5aa9f0; --accent-fg:#0f1115; --link:#5aa9f0; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  header{border-bottom:1px solid var(--border);padding-bottom:1.5rem;margin-bottom:2rem;}
+  h1{font-size:2.1rem;line-height:1.15;margin:0 0 .5rem;}
+  .lede{font-size:1.15rem;color:var(--fg);margin:.5rem 0 1.25rem;}
+  .tagline{color:var(--muted);font-style:italic;margin:0 0 1.25rem;}
+  h2{font-size:1.4rem;margin:2.25rem 0 .75rem;}
+  h3{font-size:1.05rem;margin:1.25rem 0 .35rem;}
+  ul{padding-left:1.2rem;} li{margin:.3rem 0;}
+  a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+  .btns{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.25rem 0;}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-fg);
+    padding:.7rem 1.15rem;border-radius:8px;font-weight:600;}
+  .btn.secondary{background:transparent;color:var(--fg);border:1px solid var(--border);}
+  .faq dt{font-weight:600;margin-top:1rem;}
+  .faq dd{margin:.25rem 0 0;color:var(--fg);}
+  table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem;}
+  th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left;vertical-align:top;}
+  th{background:var(--card);}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin:1.5rem 0;}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+  .overflow{overflow-x:auto;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>OvercastUI</h1>
+  <p class="lede"><strong>An in-game web browser for Minecraft — browse the web, read a wiki, or watch video in picture-in-picture without alt-tabbing or pausing your game.</strong></p>
+  <p class="tagline">The web, right there on top of Minecraft. Steam-overlay style, and it never pauses your game.</p>
+  <div class="btns">
+    <a class="btn" href="https://www.curseforge.com/minecraft/mc-mods/overcastui">Download on CurseForge</a>
+    <a class="btn secondary" href="https://github.com/merenotnoonereal/overcastui">Source on GitHub</a>
+  </div>
+</header>
+
+<p>OvercastUI is a <strong>100% client-side Fabric mod</strong> that embeds a full Chromium web browser into Minecraft as a <strong>Steam-overlay-style</strong> overlay. Summon it with a hotkey (default <strong>Shift+Tab</strong>) and work with multiple draggable, resizable, tabbed windows on top of your game — read a wiki, look something up, or keep a video playing in <strong>Picture-in-Picture</strong>, all <strong>without alt-tabbing and without ever pausing gameplay</strong>.</p>
+
+<h2>Features</h2>
+<ul>
+  <li><strong>Full web browser in-game</strong> — back/forward/reload, address bar, and find-in-page.</li>
+  <li><strong>Multiple draggable, resizable windows</strong> with <strong>tab support</strong>.</li>
+  <li><strong>Picture-in-Picture</strong> — keep a video playing in the corner while you play.</li>
+  <li><strong>Split-view</strong> — read two pages side by side.</li>
+  <li><strong>Customizable theme</strong> — adjust opacity and backdrop.</li>
+  <li><strong>Rebindable hotkey</strong> — default Shift+Tab.</li>
+  <li><strong>Tab suspension</strong> — idle tabs are suspended to save resources.</li>
+  <li><strong>Never pauses your game.</strong></li>
+</ul>
+
+<h2>Great for</h2>
+<ul>
+  <li>Reading the <strong>Hypixel Skyblock wiki</strong> (or any wiki) without leaving the game</li>
+  <li><strong>Watching a video or stream</strong> in picture-in-picture while you grind</li>
+  <li>Quick lookups, guides, and reference — mid-game, no interruption</li>
+</ul>
+
+<h2>How to use</h2>
+<ol>
+  <li>Install <a href="https://fabricmc.net/use/">Fabric Loader</a> and <a href="https://modrinth.com/mod/fabric-api">Fabric API</a>.</li>
+  <li>Put the OvercastUI <code>.jar</code> in your <code>mods</code> folder and launch.</li>
+  <li>Press <strong>Shift+Tab</strong> (rebindable) in-game to open the overlay.</li>
+  <li>Open tabs and windows, drag/resize them, and enable Picture-in-Picture or split-view as needed.</li>
+</ol>
+
+<h2 id="faq">FAQ</h2>
+<dl class="faq">
+  <dt>Is there a mod to browse the web inside Minecraft?</dt>
+  <dd>Yes — OvercastUI embeds a full web browser into Minecraft as a Steam-overlay-style overlay. Open it with a hotkey (default Shift+Tab) and browse in draggable, tabbed windows without leaving the game.</dd>
+
+  <dt>Does it pause my game when the browser is open?</dt>
+  <dd>No. Unlike alt-tabbing, OvercastUI never pauses your game — your session keeps running underneath.</dd>
+
+  <dt>Can I watch a video or YouTube while playing?</dt>
+  <dd>Yes — Picture-in-Picture mode keeps a video playing in the corner while you play.</dd>
+
+  <dt>How do I open the browser overlay?</dt>
+  <dd>Press the hotkey, which defaults to Shift+Tab. It's rebindable in the controls settings.</dd>
+
+  <dt>Is it client-side?</dt>
+  <dd>Yes — fully client-side; nothing needs to be installed on the server.</dd>
+</dl>
+
+<h2>Compatibility</h2>
+<div class="overflow">
+<table>
+  <tr><th>Loader</th><td>Fabric</td></tr>
+  <tr><th>Minecraft</th><td>1.21.1 / 1.21.11 / 26.1.x <em>(keep this current)</em></td></tr>
+  <tr><th>Dependencies</th><td>Fabric API</td></tr>
+  <tr><th>Environment</th><td>Client only</td></tr>
+  <tr><th>License</th><td>All Rights Reserved</td></tr>
+</table>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">No more alt-tabbing</h3>
+  <p>Every time you tab out to check a wiki or watch a guide, your game pauses or drops focus. OvercastUI keeps the web <em>inside</em> the game — draggable windows, tabs, Picture-in-Picture video, and split view — so you never break your session to look something up.</p>
+</div>
+
+<div class="btns">
+  <a class="btn" href="https://www.curseforge.com/minecraft/mc-mods/overcastui">Download on CurseForge</a>
+</div>
+
+<footer>
+  <p>OvercastUI by merenotnoone · <a href="https://github.com/merenotnoonereal/overcastui">GitHub</a> · <a href="https://www.curseforge.com/minecraft/mc-mods/overcastui">CurseForge</a></p>
+</footer>
+
+</div>
+</body>
+</html>
